@@ -3,6 +3,7 @@ import MapComponent from './components/MapComponent';
 import FilterPanel from './components/FilterPanel';
 import StatsPanel from './components/StatsPanel';
 import FileUpload from './components/FileUpload';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 import './App.css';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
 
   const checkDataExists = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/villages/states');
+      const response = await fetch(`${API_BASE_URL}/villages/states`);
       const result = await response.json();
       setDataUploaded(result.success && result.data && result.data.length > 0);
     } catch (error) {
@@ -37,7 +38,7 @@ function App() {
       if (district) params.append('district', district);
       if (subdistrict) params.append('subdistrict', subdistrict);
 
-      const response = await fetch(`http://localhost:5000/api/villages?${params}`);
+      const response = await fetch(`${API_BASE_URL}/villages?${params}`);
       const result = await response.json();
       setVillages(result.success ? result.data : []);
     } catch (error) {
@@ -55,7 +56,7 @@ function App() {
       if (district) params.append('district', district);
       if (subdistrict) params.append('subdistrict', subdistrict);
 
-      const response = await fetch(`http://localhost:5000/api/stats?${params}`);
+      const response = await fetch(`${API_BASE_URL}/stats?${params}`);
       const result = await response.json();
       setStats(result.success ? result.data : null);
     } catch (error) {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 import './FilterPanel.css';
 
 const FilterPanel = ({
@@ -43,7 +44,7 @@ const FilterPanel = ({
   const fetchStates = async () => {
     setLoadingStates(true);
     try {
-      const response = await fetch('http://localhost:5000/api/villages/states');
+      const response = await fetch(`${API_BASE_URL}/villages/states`);
       const result = await response.json();
       setStates(result.success ? result.data.sort() : []);
     } catch (error) {
@@ -57,7 +58,7 @@ const FilterPanel = ({
   const fetchDistricts = async (state) => {
     setLoadingDistricts(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/villages/districts/${encodeURIComponent(state)}`);
+      const response = await fetch(`${API_BASE_URL}/villages/districts/${encodeURIComponent(state)}`);
       const result = await response.json();
       setDistricts(result.success ? result.data.sort() : []);
     } catch (error) {
@@ -72,7 +73,7 @@ const FilterPanel = ({
     setLoadingSubdistricts(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/villages/subdistricts/${encodeURIComponent(state)}/${encodeURIComponent(district)}`
+        `${API_BASE_URL}/villages/subdistricts/${encodeURIComponent(state)}/${encodeURIComponent(district)}`
       );
       const result = await response.json();
       setSubdistricts(result.success ? result.data.sort() : []);

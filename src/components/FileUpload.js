@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import './FileUpload.css';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const FileUpload = ({ onUploadSuccess }) => {
   const [files, setFiles] = useState([]);
@@ -121,7 +122,7 @@ const FileUpload = ({ onUploadSuccess }) => {
         setUploading(false);
       });
 
-      xhr.open('POST', 'http://localhost:5000/api/upload/shapefile');
+      xhr.open('POST', `${API_BASE_URL}/api/upload/shapefile`);
       xhr.send(formData);
 
     } catch (error) {

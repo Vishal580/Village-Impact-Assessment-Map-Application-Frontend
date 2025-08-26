@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 import './MapComponent.css';
 
 // Fix for default markers in Leaflet
@@ -58,7 +59,7 @@ const MapComponent = ({ villages, loading, selectedState, selectedDistrict, sele
     
     try {
       const response = await fetch(
-        `http://localhost:5000/api/villages/bounds?minLat=${bounds.getSouth()}&maxLat=${bounds.getNorth()}&minLng=${bounds.getWest()}&maxLng=${bounds.getEast()}&zoom=${zoom}`
+        `${API_BASE_URL}/villages/bounds?minLat=${bounds.getSouth()}&maxLat=${bounds.getNorth()}&minLng=${bounds.getWest()}&maxLng=${bounds.getEast()}&zoom=${zoom}`
       );
       const result = await response.json();
       const villagesInViewport = result.success ? result.data : [];
