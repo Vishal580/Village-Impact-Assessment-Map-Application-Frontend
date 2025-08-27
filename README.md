@@ -146,9 +146,6 @@ User Interaction → State Update → API Call → Data Processing → Map Updat
 ```bash
 # Backend API URL (optional, uses proxy)
 REACT_APP_API_BASE_URL=http://localhost:5000/api
-
-# Development settings
-GENERATE_SOURCEMAP=false
 ```
 
 ### Proxy Configuration (package.json)

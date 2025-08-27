@@ -3,8 +3,9 @@ import MapComponent from './components/MapComponent';
 import FilterPanel from './components/FilterPanel';
 import StatsPanel from './components/StatsPanel';
 import FileUpload from './components/FileUpload';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 import './App.css';
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function App() {
   const [selectedState, setSelectedState] = useState('');

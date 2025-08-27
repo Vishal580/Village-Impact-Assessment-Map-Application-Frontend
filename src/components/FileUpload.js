@@ -122,7 +122,7 @@ const FileUpload = ({ onUploadSuccess }) => {
         setUploading(false);
       });
 
-      xhr.open('POST', `${API_BASE_URL}/api/upload/shapefile`);
+      xhr.open('POST', `${API_BASE_URL}/upload/shapefile`);
       xhr.send(formData);
 
     } catch (error) {
